@@ -1,0 +1,26 @@
+﻿@model List<Folder>
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<dive class="row mb-5">
+    <dive class="col-2">
+        <a href="/home/AddNewFolder" class=" btn btn-primary">
+            <i class="fas fa-folder-plus"></i>
+        </a>
+    </dive>
+</dive>
+<h2 class="text text-primary">Root</h2>
+<hr />
+<div class="row"> 
+    @foreach (var item in Model)
+    {
+        <div class="col-2">
+            <a asp-action="folder" asp-route-folderId="@item.Id">
+                <i class="fas fa-folder-open" style="font-size:140px;color:#f2d06c"></i>
+            </a>
+            <br>
+            <span class="text">@item.Title</span>
+        </div>
+    }
+</div>

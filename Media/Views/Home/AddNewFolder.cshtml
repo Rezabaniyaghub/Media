@@ -1,0 +1,48 @@
+﻿@model Folder
+@{
+    var parentId = (int?)ViewBag.ParentId;
+}
+<div class="row">
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-12 offset-lg-2 offset-sm-0">
+            <h4 class="text text-primary">Add New Folder</h4>
+            <hr />
+        </div>
+    </div>
+    <form asp-action="AddNewFolder" asp-antiforgery=true class="col-lg-4 col-md-6 col-sm-12 offset-lg-2 offset-sm-0">
+        <input type="hidden" value="@parentId" name="parentId" />
+        <dive class="text text-danger">
+            <div asp-validation-summary=All></div>
+        </dive>
+        <div class="col form-group p-1 my-2">
+            @* <label class="label">Title</label>*@
+            <div class="input-group mb-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Title</span>
+                </div>
+                <input type="text" asp-for="Title" class="form-control" aria-label="Title" aria-describedby="inputGroup-sizing-sm"
+                       data-toggle="tooltip" data-placement="rihgt" title="Title is required!">
+            </div>
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="col form-group p-1 my-2">
+            @* <label class="label">Title</label>*@
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>
+                </div>
+                <input type="text" asp-for="Description" class="form-control" aria-label="Description" aria-describedby="inputGroup-sizing-sm">
+            </div>
+            
+        </div>
+        <div class="col form-group p-1 my-2">
+            <button class="btn-primary" data-toggle="tooltip" data-placement="top" title="Save!">
+                <i class="fas fa-save"></i>
+            </button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}
